@@ -12,16 +12,26 @@ rem Given a string s, determine if it is a palindrome.
 
 function main()
 	
-	answer1 = pal("bear")
+	answer1 = pal("be ar")
 	?answer1
+	
+	answer4 = pal("bear")
+	?answer4
 	
 	answer2 = pal("civic")
 	?answer2
+	
+	answer3 = pal("radar")
+	?answer3
+
+	wrong = pal(1)
+	?wrong
 	
 end function
 
 function pal(string)
 	
+if type(string) = "String" then
 	arr = string.split("")
 	newString = ""
 	
@@ -34,4 +44,8 @@ function pal(string)
 	else return false
 	end if 
 
+else if (type(string) <> "string") or (string.contains(" "))  then
+		?"Please Enter a word" 
+		return false
+end if
 end function 
