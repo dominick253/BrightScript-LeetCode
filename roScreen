@@ -1,0 +1,73 @@
+' ' function main()
+' ' 	screen = createobject("roscreen", true, 600, 400)
+' ' 	p = createobject("roMessagePort")
+' ' 	screen.SetMessagePort(p)
+' ' ' 	x1 = 40.0
+' ' ' 	x2 = 40.0
+' ' ' 	y1 = 100.0
+' ' ' 	y2 = 100.0
+' ' x = 10
+' ' 	y = 300
+' ' 	theta = 90.0 
+' ' while true
+' ' ' 	x1 = x1 + 0.1
+' ' ' 	x2 = x2 + 0.1
+' ' ' 	y2 = y1 + 0.1
+' ' ' 	y1 = y1 + 0.1
+' ' 		x = x + 1
+' ' 		y = y + 10
+' ' 	screen.Clear(&h000000FF)
+' ' 	screen.DrawLine(x1,y1,x1,x2, &hFF00F0FA)
+' ' 	screen.DrawTransformedObject(x, y, theta, screen)
+' ' 	screen.SwapBuffers()
+' ' end while
+' ' end function 
+
+' function main()
+' 	screen = CreateObject("roScreen", true)
+' port = CreateObject("roMessagePort")
+' screen.SetPort(port)
+
+' ' Original line
+' x1 = 100: y1 = 100
+' x2 = 150: y2 = 100
+
+' ' Rotation center and angle
+' cx = 125: cy = 125
+' angle = 45 ' degrees
+' while true
+' screen.Clear(&h000000FF)
+' x1 = x1 + 1: y1 = y1 + 1
+' ' Get rotated line
+' rotated = RotateLine(cx, cy, x1, y1, x2, y2, angle)
+
+' ' Draw original (optional)
+' screen.DrawLine(x1, y1, x2, y2, &h00FF00FF) ' Green
+
+' ' Draw rotated
+' screen.DrawLine(rotated.x1, rotated.y1, rotated.x2, rotated.y2, &hFF0000FF) ' Red
+
+' screen.SwapBuffers()
+
+' end while
+' end function
+
+' function RotateLine(cx as Float, cy as Float, x1 as Float, y1 as Float, x2 as Float, y2 as Float, angleDeg as Float) as Object
+'     angleRad = angleDeg * 3.14159265 / 180.0
+
+'     x1r = cx + Cos(angleRad) * (x1 - cx) - Sin(angleRad) * (y1 - cy) 
+'     y1r = cy + Sin(angleRad) * (x1 - cx) + Cos(angleRad) * (y1 - cy) 
+'     x2r = cx + Cos(angleRad) * (x2 - cx) - Sin(angleRad) * (y2 - cy)
+'     y2r = cy + Sin(angleRad) * (x2 - cx) + Cos(angleRad) * (y2 - cy)
+
+'     return {
+'         x1: x1r,
+'         y1: y1r,
+'         x2: x2r,
+'         y2: y2r
+'     }
+' end function
+
+
+
+
